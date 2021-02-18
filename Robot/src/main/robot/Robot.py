@@ -7,3 +7,8 @@ class Robot():
     def robotPeriodic(self):
         pass
 
+
+
+
+if __name__ == '__main__':
+    pass
