@@ -1,7 +1,7 @@
 import threading
 
 
-class Drivetrain(threading.Thread):
+class Shooter(threading.Thread):
 
     def __init__(self, threadID, name):
         threading.Thread.__init__(self)
@@ -10,11 +10,4 @@ class Drivetrain(threading.Thread):
         pass
 
     def run(self):
-        print("Drivetrain running")
-        pass
-
-    def drive_train_periodic(self):
-        pass
-
-    def tank_drive(self):
-        pass
+        print("Shooter Running")

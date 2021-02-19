@@ -1,8 +1,6 @@
 import threading
 
-
-class Drivetrain(threading.Thread):
-
+class Conveyer():
     def __init__(self, threadID, name):
         threading.Thread.__init__(self)
         self.threadID = threadID
@@ -10,11 +8,4 @@ class Drivetrain(threading.Thread):
         pass
 
     def run(self):
-        print("Drivetrain running")
-        pass
-
-    def drive_train_periodic(self):
-        pass
-
-    def tank_drive(self):
-        pass
+        print("Conveyer Running")
