@@ -1,24 +1,27 @@
 import serial
 
-ser = serial.Serial(115200)
+ser = serial.Serial('/dev/ttyUSB0', 115200)
 
+# Make a map to store <id, value>
+# Function that gets a value for given id
+# Function that asks for value from arduino??
+# Split encoded serial by comma
 
-def post_serial(id, value):
+def encode_serial(id, value):
     return id + value + ","
 
+def decode_serial(serialMessage):
+    id = serialMessage[0:2]
+    value = serialMessage[2:5]
 
 def send_serial(message):
     ser.write(message)
 
 
-def read_serial(message_to_read):
-    print(message_to_read)
-
+def read_serial():
+    if ser.in_waiting() > 0:
+        print(ser.read())
 
 while True:
-    string1 = "id";
-    string2 = "value"
-    while ser.in_waiting > 0:
-        read_serial(ser.read())
-    post_serial(string1, string2)
-    send_serial(post_serial())
+    read_serial()
+    send_serial(input("Input:"))
