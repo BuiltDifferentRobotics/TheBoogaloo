@@ -7,12 +7,21 @@ ser = serial.Serial('/dev/ttyUSB0', 115200)
 # Function that asks for value from arduino??
 # Split encoded serial by comma
 
-def encode_serial(id, value):
-    return id + value + ","
+d = {1: 000, 2: 000, 3: 000}
+
+
+def get_value_from_id(ID):
+    return d.get(ID)
+
+
+def encode_serial(ID, value):
+    return ID + value + ","
+
 
 def decode_serial(serialMessage):
     id = serialMessage[0:2]
     value = serialMessage[2:5]
+
 
 def send_serial(message):
     ser.write(message)
