@@ -1,7 +1,7 @@
 import threading
 
 class Robot():
-
+    conveyer = Conveyer()
     def __init__(self):
 
         pass
