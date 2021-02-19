@@ -1,16 +1,15 @@
 import threading
 
+from src.lib.robot_manager.Subsystem import Subsystem
 
-class Conveyer(threading.Thread):
 
-    def __init__(self, threadID, name, thingy):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
-        self.thingy = thingy
+class Conveyer(Subsystem):
+
+    def __init__(self):
         pass
 
-    def run(self):
-        while(True):
-            self.thingy.iterate()
-            print("Conveyer Running")
+    def periodic(self):
+        pass
+
+    def is_finished(self):
+        return False

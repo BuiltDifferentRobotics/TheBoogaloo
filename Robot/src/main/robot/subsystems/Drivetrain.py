@@ -1,20 +1,24 @@
-import threading
+from src.lib.robot_manager.Subsystem import Subsystem
 
 
-class Drivetrain(threading.Thread):
+class Drivetrain(Subsystem):
 
-    def __init__(self, threadID, name):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
+    drivetrain_motors = [0, 0, 0, 0]  # left_leader, left_follower, right_leader, right_follower
+
+    def __init__(self):
         pass
 
-    def run(self):
-        while(True):
-            print("Drivetrain running")
+    def tank_drive(self, left_speed, right_speed):
+        self.drivetrain_motors[0] = left_speed
+        self.drivetrain_motors[1] = left_speed
 
-    def drive_train_periodic(self):
-        pass
+        self.drivetrain_motors[2] = right_speed
+        self.drivetrain_motors[3] = right_speed
 
-    def tank_drive(self):
-        pass
+
+    def periodic(self):
+        self.tank_drive(left_speed=1, right_speed=1)
+        print("Drivetrain running")
+
+    def is_finished(self):
+        return False

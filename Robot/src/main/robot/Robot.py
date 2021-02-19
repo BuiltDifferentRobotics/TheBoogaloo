@@ -1,41 +1,32 @@
-import threading
-
-from src.main.robot.subsystems.Conveyer import Conveyer
+from src.lib.robot_manager.RobotManager import SubsystemManager
 from src.main.robot.subsystems.Drivetrain import Drivetrain
-from src.main.robot.subsystems.SerialControlTest import SerialControlTest
-from src.main.robot.subsystems.SerialController import SerialController
 from src.main.robot.subsystems.Shooter import Shooter
-
 
 class Robot:
 
+    driveTrain = None
+    shooter = None
+    serialController = None
+
+    subsystemManager = None
+
+    test_counter = None
+
     def __init__(self):
-        pass
+        self.driveTrain = Drivetrain()
+        self.shooter = Shooter()
+
+        self.subsystemManager = SubsystemManager()
+
+        self.test_counter = 0
+
+        self.subsystemManager.add(self.shooter)
+        self.subsystemManager.add(self.driveTrain)
 
     def robotPeriodic(self):
-        thingy = SerialControlTest()
-
-        shooter = Shooter(1, "shooter thread", thingy)
-        #serialController = SerialController(2, "serialController thread")
-        conveyer = Conveyer(3, "conveyer thread", thingy)
-        driveTrain = Drivetrain(4, "driveTrain thread")
-
-        shooter.start()
-        #serialController.start()
-        conveyer.start()
-        driveTrain.start()
-
-        shooter.join()
-        #serialController.join()
-        conveyer.join()
-        driveTrain.join()
-
-
-
-        print("DONE")
+        self.subsystemManager.run()
 
 
 if __name__ == '__main__':
     robot = Robot()
     robot.robotPeriodic()
-
