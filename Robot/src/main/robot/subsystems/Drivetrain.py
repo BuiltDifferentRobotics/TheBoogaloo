@@ -10,8 +10,8 @@ class Drivetrain(threading.Thread):
         pass
 
     def run(self):
-        print("Drivetrain running")
-        pass
+        while(True):
+            print("Drivetrain running")
 
     def drive_train_periodic(self):
         pass

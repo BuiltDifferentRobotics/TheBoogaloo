@@ -1,6 +1,8 @@
 import threading
 
+
 class SerialController(threading.Thread):
+    stupid = 1
 
     def __init__(self, threadID, name):
         threading.Thread.__init__(self)
@@ -9,4 +11,8 @@ class SerialController(threading.Thread):
         pass
 
     def run(self):
-        print("Serial Controller Running")
+        while(True):
+            print("Serial Controller iterated")
+
+            print(SerialController.stupid)
+            SerialController.stupid += 1

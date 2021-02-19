@@ -1,5 +1,7 @@
 import threading
 
+from src.main.robot.subsystems import SerialController
+
 
 class Shooter(threading.Thread):
 
@@ -10,4 +12,8 @@ class Shooter(threading.Thread):
         pass
 
     def run(self):
-        print("Shooter Running")
+        while True:
+            print(SerialController.stupid)
+            if SerialController.stupid % 5 == 0:
+                print("stupid number")
+                print(SerialController.stupid)
