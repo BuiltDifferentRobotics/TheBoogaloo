@@ -31,8 +31,9 @@ void Blink2(void *params){
  }
  
 }
-void main() {
+void setup() {
  Serial.begin(115200);
  xTaskCreate(Blink1, "Task1", 128, NULL, 1, NULL);
  xTaskCreate(Blink2, "Task2", 128, NULL, 1, NULL);
+ vTaskStartScheduler();
 }
