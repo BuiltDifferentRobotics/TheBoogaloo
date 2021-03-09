@@ -3,17 +3,14 @@ from src.lib.robot_manager.Subsystem import Subsystem
 
 class Drivetrain(Subsystem):
 
-    drivetrain_motors = [0, 0, 0, 0]  # left_leader, left_follower, right_leader, right_follower
+    drivetrain_motors = [0, 0]  # left_speed, right_speed
 
     def __init__(self):
         pass
 
     def tank_drive(self, left_speed, right_speed):
         self.drivetrain_motors[0] = left_speed
-        self.drivetrain_motors[1] = left_speed
-
-        self.drivetrain_motors[2] = right_speed
-        self.drivetrain_motors[3] = right_speed
+        self.drivetrain_motors[1] = right_speed
         # test
 
 
