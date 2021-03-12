@@ -11,8 +11,6 @@ class Drivetrain(Subsystem):
     def tank_drive(self, left_speed, right_speed):
         self.drivetrain_motors[0] = left_speed
         self.drivetrain_motors[1] = right_speed
-        # test
-
 
     def periodic(self):
         self.tank_drive(left_speed=1, right_speed=1)
