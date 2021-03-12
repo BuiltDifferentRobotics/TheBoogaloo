@@ -5,7 +5,6 @@ class Smart_Dict():
 
     values = {} # (int x, int y)
 
-    interpol_range = 0
     top_bound = (0,0) #(max x, bound y)
     bot_bound = (0,0) #(min x, bound y)
 
@@ -25,7 +24,6 @@ class Smart_Dict():
             return self.bot_bound[1]
         elif x > self.top_bound[0]:
             return self.top_bound[1]
-        if(self.interpol_range == 0):
-            spl = UnivariateSpline(self.values.keys(), self.values.values())
-            spl.set_smoothing_factor(0.5)
-            return spl(x)
+        spl = UnivariateSpline(self.values.keys(), self.values.values())
+        spl.set_smoothing_factor(0.5)
+        return spl(x)
