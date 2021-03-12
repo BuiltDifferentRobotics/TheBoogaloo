@@ -24,6 +24,6 @@ class Smart_Dict():
             return self.bot_bound[1]
         elif x > self.top_bound[0]:
             return self.top_bound[1]
-        spl = UnivariateSpline([1,2,6,8], [3,4,5,9]) # Convert dict keys and values to an array-like
+        spl = UnivariateSpline(list(self.values.keys()), list(self.values.values()))
         spl.set_smoothing_factor(0.5)
         return spl(x)
