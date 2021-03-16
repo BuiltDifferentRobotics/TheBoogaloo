@@ -27,3 +27,4 @@ class Smart_Dict():
         spl = UnivariateSpline(list(self.values.keys()), list(self.values.values()))
         spl.set_smoothing_factor(0.5)
         return spl(x)
+
