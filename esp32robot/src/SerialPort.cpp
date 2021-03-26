@@ -13,7 +13,16 @@ bool SerialPort::messageToRead(void) // Wrapper function; RUN BEFORE DECODING NE
 
 void SerialPort::decodeNextMessage(uint8_t* deviceID, int* value) // take in a pointer to store the result of the next message
 {
-    
+    /* Arduino Decoding Code
+    id_decimal = int(serial_message[0:2], 16)
+    multiplier = 1 if serial_message[2] == "0" else -1
+    value_decimal = int(serial_message[3:5], 16)
+    return [id_decimal, multiplier*value_decimal] */
+
+    String temp = Serial.readStringUntil('\'');
+    char* pEnd;
+    *value = strtol((temp.substring(0, 2)), &pEnd, 16); // grab first two characters
+
 }
 
 std::string SerialPort::encodePacket(int deviceID, int value)
@@ -34,7 +43,7 @@ std::string SerialPort::encodePacket(int deviceID, int value)
     return id + val + temp3 + ",";
 }
 
-std::string SerialPort::sendMessage(std::string packets[]) // packets -> [id1, val1, id2, val2, id3, val3]
+void SerialPort::sendMessage(std::string message) // packets -> [id1, val1, id2, val2, id3, val3]
 {
-    return "";
+    Serial.print(message.c_str()); // convert to a c string to send over serial
 }

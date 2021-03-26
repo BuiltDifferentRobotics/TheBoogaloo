@@ -29,5 +29,5 @@ class SerialPort
         void decodeNextMessage(uint8_t* deviceID, int* value);
 
         std::string encodePacket(int deviceID, int value); // Takes in device ID and a value, and converts to a hex string
-        std::string sendMessage(std::string packets[]); // takes in list of packets, sends message over serial
+        void sendMessage(std::string message); // takes in list of packets, sends message over serial
 };
